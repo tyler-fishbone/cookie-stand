@@ -20,14 +20,28 @@ var firstAndPike  = {
     return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
   },
   
-  // 4. write method to determine random number of cookies per hour based on 1, 2, 3 above
+  // 4. method to write hours and cookies sold to html
   render: function() {
+    // 4.01 inst variable for counting total cookies
+    var totalCookiesSold = 0;
+
+    // reference correct list
     var ulEl = document.getElementById('1stAndPike');
+    //loop through to write hour and cookie amount
     for(var i = 0; i < hoursOfOperation.length; i++){
+      var cookiesSoldInHour = Math.floor(this.randomNumCustomers_Hour() * this.avgCookies_Customer);
+
+      // create list item
       var liEl = document.createElement('li');
-      liEl.textContent = hoursOfOperation[i] + ': ' + Math.floor((this.randomNumCustomers_Hour() * this.avgCookies_Customer)) + ' cookies';
+      // write hour and cookie amount to the list item
+      liEl.textContent = hoursOfOperation[i] + ': ' + cookiesSoldInHour + ' cookies';
+      // append list item the unorderd list
       ulEl.appendChild(liEl);
+      totalCookiesSold += cookiesSoldInHour;
     }
+    liEl = document.createElement('li');
+    liEl.textContent = 'Total: ' + totalCookiesSold;
+    ulEl.appendChild(liEl);
   }
 };
 
