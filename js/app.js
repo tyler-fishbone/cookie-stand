@@ -2,7 +2,7 @@
 
 // global variables here
 // instantial array of strings, 6am -> 8pm
-hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 
 
@@ -14,13 +14,38 @@ var firstAndPike  = {
   maxCust_Hour: 65,
   // 3. store average Cooks per customer
   avgCookies_Customer: 6.3,
+  
+  // 3.1 method that generates a random number of cutsomers per hour
+  randomNumCustomers_Hour: function() {
+    return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
+  },
   // 4. write method to determine random number of cookies per hour based on 1, 2, 3 above
- 
+  render: function() {
+    var ulEl = document.getElementById('1stAndPike');
+    for(var i = 0; i < hoursOfOperation.length; i++){
+      // 1. create list items
+      var liEl = document.createElement('li');
+      // 2. give them content
+      liEl.textContent = 
+      // 3. apprend the li to the up
+      // parentElement.appendChild(childElement);
+
+
+
+
+
+         this.randomNumCustomers_Hour() * this.avgCookies_Customer;
+      } 
+    }
+  }
+  
+  
   // 5. use above method and write values to an array for each hour
   // 5.1. store that array in a variable
   // 6. loop through array of strings and avgCustomers and write elements to HTML
-  
-}
+};
+
+console.log('one hour = ' + firstAndPike.oneHourOfSales() + ' cookies');
 
 
 
