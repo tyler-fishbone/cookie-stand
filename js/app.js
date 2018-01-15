@@ -69,15 +69,36 @@ var seaTacAirport = {
 // console.log(seaTacAirport.randomNumCustomers_Hour());
 seaTacAirport.render();
 
-
-
-
-
-
-
-
-
 /* Seattle Center */
+var seattleCenter = {
+  minCust_Hour: 11,
+  maxCust_Hour: 38,
+  avgCookies_Customer: 3.7,
+  randomNumCustomers_Hour: function () {
+    return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
+  },
+  render: function() {
+    var totalCookiesSold = 0;
+    var ulEl = document.getElementById('seattleCenter');
+    for(var i = 0; i < hoursOfOperation.length; i++){
+      var cookiesSoldInHour = Math.floor(this.randomNumCustomers_Hour() * this.avgCookies_Customer);
+      var liEl = document.createElement('li');
+      liEl.textContent = hoursOfOperation[i] + ': ' + cookiesSoldInHour + ' cookies';
+      ulEl.appendChild(liEl);
+      totalCookiesSold += cookiesSoldInHour;
+    }
+    liEl = document.createElement('li');
+    liEl.textContent = 'Total: ' + totalCookiesSold + ' cookies';
+    ulEl.appendChild(liEl);
+  }
+};
+seattleCenter.render();
+
+
+
+
+
+
 /* Capitol Hill */
 /* Alki */
 
