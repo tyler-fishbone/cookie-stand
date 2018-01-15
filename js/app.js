@@ -19,33 +19,20 @@ var firstAndPike  = {
   randomNumCustomers_Hour: function() {
     return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
   },
+  
   // 4. write method to determine random number of cookies per hour based on 1, 2, 3 above
   render: function() {
     var ulEl = document.getElementById('1stAndPike');
     for(var i = 0; i < hoursOfOperation.length; i++){
-      // 1. create list items
       var liEl = document.createElement('li');
-      // 2. give them content
-      liEl.textContent = 
-      // 3. apprend the li to the up
-      // parentElement.appendChild(childElement);
-
-
-
-
-
-         this.randomNumCustomers_Hour() * this.avgCookies_Customer;
-      } 
+      liEl.textContent = hoursOfOperation[i] + ': ' + Math.floor((this.randomNumCustomers_Hour() * this.avgCookies_Customer)) + ' cookies';
+      ulEl.appendChild(liEl);
     }
   }
-  
-  
-  // 5. use above method and write values to an array for each hour
-  // 5.1. store that array in a variable
-  // 6. loop through array of strings and avgCustomers and write elements to HTML
 };
 
-console.log('one hour = ' + firstAndPike.oneHourOfSales() + ' cookies');
+// console.log('one hour = ' + firstAndPike.oneHourOfSales() + ' cookies');
+firstAndPike.render();
 
 
 
