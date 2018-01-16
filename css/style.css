@@ -1,0 +1,76 @@
+
+
+
+body {
+  background-color:  #36342C;;
+  color: rgb(255, 255, 255);
+  /* border: 1px solid rgb(255, 255, 255); */
+}
+
+header {
+  color: #36342C;
+  border: 1px solid rgb(255, 255, 255);
+  padding-bottom: 120px;
+}
+
+
+h1 {
+  font-family: 'Indie Flower', cursive;
+  color: #BC543B;
+  max-width: 50%;
+}
+
+section{
+  /* float: left;
+  padding: 3%;
+  width: 24%; */
+  background-color: rgb(70, 44, 30);
+  /* margin: 15px; */
+}
+
+main {
+  width: 100%
+}
+
+main section {
+  min-height: 300 px;
+}
+
+ul {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+footer li {
+  font-size: 14px;
+}
+
+#salmon_logo {
+  /* border: 1px solid rgb(255, 255, 255); */
+  position: absolute;
+  top: 60px;
+  width: 60%;
+  left: 20%;
+  margin: auto;
+}
+
+.top_right {
+  font-family: 'Indie Flower', cursive;
+  font-size: 19px;
+  position: absolute;
+  right: 20px;
+  top: 0px;
+  width: 300px;
+  color: #BC543B;
+  max-width: 50%;
+}
+
+#home_button {
+  top: 30px;
+  width: 100px;
+}
+
+#sales_link {
+  bottom: 10px;
+  right: 10px;
+  color: rgb(109, 109, 109)
+}
