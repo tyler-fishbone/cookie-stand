@@ -14,7 +14,9 @@ var firstAndPike  = {
   avgCookies_Customer: 6.3,
   // method that generates a random number of cutsomers per hour
   randomNumCustomers_Hour: function() {
-    return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
+    var ranNumCust = Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
+    console.log(ranNumCust);
+    return ranNumCust;
   },
   // method to write hours and cookies sold to html
   render: function() {
@@ -49,7 +51,7 @@ var seaTacAirport = {
   maxCust_Hour: 24,
   avgCookies_Customer: 1.2,
   randomNumCustomers_Hour: function () {
-    return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
+    return Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
   },
   render: function() {
     var totalCookiesSold = 0;
@@ -74,7 +76,7 @@ var seattleCenter = {
   maxCust_Hour: 38,
   avgCookies_Customer: 3.7,
   randomNumCustomers_Hour: function () {
-    return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
+    return Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
   },
   render: function() {
     var totalCookiesSold = 0;
@@ -100,7 +102,7 @@ var capitolHill = {
   maxCust_Hour: 38,
   avgCookies_Customer: 2.3,
   randomNumCustomers_Hour: function() {
-    return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
+    return Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
   },
   render: function() {
     var totalCookiesSold = 0;
@@ -125,7 +127,7 @@ var alki = {
   maxCust_Hour: 16,
   avgCookies_Customer: 4.6,
   randomNumCustomers_Hour: function() {
-    return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
+    return Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
   },
   render: function() {
     var totalCookiesSold = 0;
