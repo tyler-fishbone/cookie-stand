@@ -125,8 +125,25 @@ var alki = {
   minCust_Hour: 2,
   maxCust_Hour: 16,
   avgCookies_Customer: 4.6,
-  randomNumCustomers_Hour: function() {}
-}
+  randomNumCustomers_Hour: function() {
+    return Math.random() * (this.maxCust_Hour - this.minCust_Hour) + this.minCust_Hour;
+  },
+  render: function() {
+    var totalCookiesSold = 0;
+    var ulEl = document.getElementById('alki');
+    for(var i = 0; i < hoursOfOperation.length; i++){
+      var cookiesSoldInHour = Math.floor(this.randomNumCustomers_Hour() * this.avgCookies_Customer);
+      var liEl = document.createElement('li');
+      liEl.textContent = hoursOfOperation[i] + ': ' + cookiesSoldInHour + ' cookies';
+      ulEl.appendChild(liEl);
+      totalCookiesSold += cookiesSoldInHour;
+    }
+    liEl = document.createElement('li');
+    liEl.textContent = 'Total: ' + totalCookiesSold + ' cookies';
+    ulEl.appendChild(liEl);
+  }
+};
+alki.render();
 
 
 
