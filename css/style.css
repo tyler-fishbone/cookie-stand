@@ -1,0 +1,24 @@
+
+
+
+body {
+  background-color:  #36342C;;
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+}
+
+header {
+  color: #36342C;
+}
+
+header p {
+  position: absolute;
+  right: 20px;
+  top: 14px;
+  width: 200px;
+  color: #BC543B;
+}
+
+h1 {
+  color: #BC543B;
+}
