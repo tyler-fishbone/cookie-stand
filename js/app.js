@@ -3,6 +3,8 @@
 // global variables here
 // instantial array of strings, 6am -> 8pm
 var hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var arrayOfLocations = [];
+var salesTable = document.getElementById('locations');
 
 function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
   this.name = name;
@@ -14,10 +16,34 @@ function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
     // console.log(ranNumCust);
     return ranNumCust;
   };
+  arrayOfLocations.push(this);
 }
 
+//render method for Location
+Location.prototype.render = function () {
+  //create tr and td
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.name;
+  trEl.appendChild(tdEl);
+  
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.minCust_Hour;
+  trEl.appendChild(tdEl);
+  
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.maxCust_Hour;
+  trEl.appendChild(tdEl);
+
+  salesTable.appendChild(trEl);
+};
+
+//code for testing
 var testLocation = new Location('testLocation', 6, 10, 3);
 console.log(testLocation.randomNumCustomers_Hour());
+console.log(arrayOfLocations);
+testLocation.render();
+
 
 
 /* 1st and Pike */
