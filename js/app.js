@@ -21,18 +21,21 @@ function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
 
 //render method for Location
 Location.prototype.render = function () {
+  var totalCookiesSold = 0;
   //create tr and td
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   tdEl.textContent = this.name;
   trEl.appendChild(tdEl);
-  
+  for(var i = 0; i < hoursOfOperation.length; i++){
+    var cookiesSoldInHour = Math.floor(this.randomNumCustomers_Hour() * this.avgCookies_Customer);
+    tdEl = document.createElement('td');
+    tdEl.textContent = hoursOfOperation[i] + ': ' + cookiesSoldInHour + ' cookies';
+    trEl.appendChild(tdEl);
+    totalCookiesSold += cookiesSoldInHour;
+  }
   tdEl = document.createElement('td');
-  tdEl.textContent = this.minCust_Hour;
-  trEl.appendChild(tdEl);
-  
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.maxCust_Hour;
+  tdEl.textContent = totalCookiesSold;
   trEl.appendChild(tdEl);
 
   salesTable.appendChild(trEl);
@@ -45,6 +48,7 @@ console.log(arrayOfLocations);
 testLocation.render();
 
 
+/* -------- */
 
 /* 1st and Pike */
 var firstAndPike  = {
@@ -52,13 +56,9 @@ var firstAndPike  = {
   minCust_Hour: 23,
   maxCust_Hour: 65,
   avgCookies_Customer: 6.3,
-  // method that generates a random number of cutsomers per hour
-  randomNumCustomers_Hour: function() {
-    var ranNumCust = Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
-    // console.log(ranNumCust);
-    return ranNumCust;
+  randomNumCustomers_Hour: function () {
+    return Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
   },
-  // method to write hours and cookies sold to html
   render: function() {
     var totalCookiesSold = 0;
     var ulEl = document.getElementById('firstAndPike');
@@ -66,6 +66,7 @@ var firstAndPike  = {
       var cookiesSoldInHour = Math.floor(this.randomNumCustomers_Hour() * this.avgCookies_Customer);
       var liEl = document.createElement('li');
       liEl.textContent = hoursOfOperation[i] + ': ' + cookiesSoldInHour + ' cookies';
+      ulEl.appendChild(liEl);
       totalCookiesSold += cookiesSoldInHour;
     }
     liEl = document.createElement('li');
