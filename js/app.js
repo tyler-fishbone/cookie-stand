@@ -4,8 +4,20 @@
 // instantial array of strings, 6am -> 8pm
 var hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
-var location
+function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
+  this.name = name;
+  this.minCust_Hour = minCust_Hour;
+  this.maxCust_Hour = maxCust_Hour;
+  this.avgCookies_Customer = avgCookies_Customer;
+  this.randomNumCustomers_Hour = function () {
+    var ranNumCust = Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
+    // console.log(ranNumCust);
+    return ranNumCust;
+  };
+}
 
+var testLocation = new Location('testLocation', 6, 10, 3);
+console.log(testLocation.randomNumCustomers_Hour());
 
 
 /* 1st and Pike */
@@ -17,7 +29,7 @@ var firstAndPike  = {
   // method that generates a random number of cutsomers per hour
   randomNumCustomers_Hour: function() {
     var ranNumCust = Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
-    console.log(ranNumCust);
+    // console.log(ranNumCust);
     return ranNumCust;
   },
   // method to write hours and cookies sold to html
