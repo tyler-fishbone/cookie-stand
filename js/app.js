@@ -4,13 +4,15 @@
 // instantial array of strings, 6am -> 8pm
 var hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
+var location
+
+
+
 /* 1st and Pike */
 var firstAndPike  = {
-  // minimum customers per hour
+  // stats for location
   minCust_Hour: 23,
-  // maximum customers per hour
   maxCust_Hour: 65,
-  // average customers per hour
   avgCookies_Customer: 6.3,
   // method that generates a random number of cutsomers per hour
   randomNumCustomers_Hour: function() {
@@ -20,23 +22,14 @@ var firstAndPike  = {
   },
   // method to write hours and cookies sold to html
   render: function() {
-    // inst variable for counting total cookies
     var totalCookiesSold = 0;
-    // reference correct list
     var ulEl = document.getElementById('firstAndPike');
-    //loop through to write hour and cookie amount
     for(var i = 0; i < hoursOfOperation.length; i++){
       var cookiesSoldInHour = Math.floor(this.randomNumCustomers_Hour() * this.avgCookies_Customer);
-      // create list item
       var liEl = document.createElement('li');
-      // write hour and cookie amount to the list item
       liEl.textContent = hoursOfOperation[i] + ': ' + cookiesSoldInHour + ' cookies';
-      // append list item the unordered list
-      ulEl.appendChild(liEl);
-      // add cookies sold in that hour to total cookies sold var
       totalCookiesSold += cookiesSoldInHour;
     }
-    // append unordered list with total number of cookies sold
     liEl = document.createElement('li');
     liEl.textContent = 'Total: ' + totalCookiesSold + ' cookies';
     ulEl.appendChild(liEl);
