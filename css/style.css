@@ -32,6 +32,10 @@ main {
   width: 100%
 }
 
+table {
+  border: 1px solid rgb(255, 255, 255);
+}
+
 main section {
   min-height: 300 px;
 }
