@@ -3,11 +3,13 @@
 // global variables here
 // instantial array of strings, 6am -> 8pm
 var hoursOfOperation = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm'];
-// var arrayOfLocations = [];
-var salesTable = document.getElementById('locations');
-var arrayOfTotals = [];
+var locationTable = document.getElementById('locations');
+var newLocationForm = document.getElementById('new-location-form');
 
-function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
+var arrayOfLocations = [];
+var arrayOfHourlyTotals = [];
+
+function Location(name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
   this.name = name;
   this.minCust_Hour = minCust_Hour;
   this.maxCust_Hour = maxCust_Hour;
@@ -17,7 +19,7 @@ function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
     // console.log(ranNumCust);
     return ranNumCust;
   };
-  // arrayOfLocations.push(this);
+  arrayOfLocations.push(this);
 }
 
 //render method for Location
@@ -36,21 +38,20 @@ Location.prototype.render = function () {
     trEl.appendChild(tdEl);
     totalCookiesSold += cookiesSoldInHour;
     //increment array of totals index by cookiesSoldInHour
-    if (arrayOfTotals.length !== hoursOfOperation.length ) {
-      arrayOfTotals[i] = parseInt(cookiesSoldInHour);
+    if (arrayOfHourlyTotals.length !== hoursOfOperation.length ) {
+      arrayOfHourlyTotals[i] = parseInt(cookiesSoldInHour);
     } else {
-      arrayOfTotals[i] += parseInt(cookiesSoldInHour);
+      arrayOfHourlyTotals[i] += parseInt(cookiesSoldInHour);
     }
-    console.log(arrayOfTotals);
+    // console.log(arrayOfHourlyTotals);
   }
   //finish tr with total cookies sold
   tdEl = document.createElement('td');
   tdEl.textContent = totalCookiesSold;
   trEl.appendChild(tdEl);
   //append everything into table row
-  salesTable.appendChild(trEl);
+  locationTable.appendChild(trEl);
 };
-
 
 function makeHeaderRow (headerArray) {
   //new row, empty first cell
@@ -68,41 +69,65 @@ function makeHeaderRow (headerArray) {
   thEl.textContent = 'Daily Location Total';
   trEl.appendChild(thEl);
   //append everything into table row
-  salesTable.appendChild(trEl);
+  locationTable.appendChild(trEl);
 }
 
-
 function makeFooterRow (footerArray) {
+  var sumTotalOfElements = 0;
   //new row, empty first cell
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   tdEl.textContent = 'Totals';
   trEl.appendChild(tdEl);
   // loop through hours of operation
-  for(var i = 0; i < arrayOfTotals.length; i++){
+  for(var i = 0; i < arrayOfHourlyTotals.length; i++){
     tdEl = document.createElement('td');
     tdEl.textContent = footerArray[i];
     trEl.appendChild(tdEl);
+    sumTotalOfElements += footerArray[i];
   }
-  tdEl = document.createElement('th');
-  tdEl.textContent = '';
+  tdEl = document.createElement('td');
+  tdEl.textContent = sumTotalOfElements;
   trEl.appendChild(tdEl);
   //append everything into table row
-  salesTable.appendChild(trEl);
+  locationTable.appendChild(trEl);
+  //make last value the sum total of the elements in the array
+}
+
+// function that loops through location objects, renders them to table
+// this function will create headers and footer row as well
+function renderAllLocations() {
+  makeHeaderRow(hoursOfOperation);
+  for(var i in arrayOfLocations){
+    arrayOfLocations[i].render();
+  }
+  makeFooterRow(arrayOfHourlyTotals);
+}
+
+// function which adds location from form to table
+function addNewLocation(event) {
+  event.preventDefault();
+  console.log(event.target.locationName.value);
+  var newName = event.target.locationName.value;
+  var newMinCust_Hour = event.target.minCust_Hour.value;
+  var newMaxCust_Hour = event.target.maxCust_Hour.value;
+  var newAvgCookies_Customer = event.target.avgCookies_Customer.value;
+
+  new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
+
+  locationTable.innerHTML = '';
+  arrayOfHourlyTotals = [];
+  renderAllLocations();
 }
 
 //construct objects
-var firstAndPike = new Location('1st and Pike', 23, 65, 6.3);
-var seaTacAirport = new Location('Seatac Airport', 3, 24, 1.2);
-var seattleCenter = new Location('Seattle Center', 11, 38, 3.7);
-var capitolHill = new Location('Capitol Hill', 20, 38, 2.3);
-var alki = new Location('Alki', 2, 16, 4.6);
+new Location('1st and Pike', 23, 65, 6.3);
+new Location('Seatac Airport', 3, 24, 1.2);
+new Location('Seattle Center', 11, 38, 3.7);
+new Location('Capitol Hill', 20, 38, 2.3);
+new Location('Alki', 2, 16, 4.6);
 
-//make table
-makeHeaderRow(hoursOfOperation);
-firstAndPike.render();
-seaTacAirport.render();
-seattleCenter.render();
-capitolHill.render();
-alki.render();
-makeFooterRow(arrayOfTotals);
+// event listener for form submittal
+newLocationForm.addEventListener('submit', addNewLocation);
+
+renderAllLocations();

@@ -4,7 +4,6 @@
 body {
   background-color:  #36342C;;
   color: rgb(255, 255, 255);
-  /* border: 1px solid rgb(255, 255, 255); */
 }
 
 header {
@@ -21,11 +20,7 @@ h1 {
 }
 
 section{
-  /* float: left;
-  padding: 3%;
-  width: 24%; */
   background-color: rgb(70, 44, 30);
-  /* margin: 15px; */
 }
 
 main {
@@ -34,6 +29,10 @@ main {
 
 table {
   border: 1px solid rgb(255, 255, 255);
+}
+
+label {
+  width: 260px;
 }
 
 main section {
@@ -49,12 +48,23 @@ footer li {
 }
 
 #salmon_logo {
-  /* border: 1px solid rgb(255, 255, 255); */
   position: absolute;
   top: 60px;
   width: 60%;
   left: 20%;
   margin: auto;
+}
+
+.title {
+  float: left;
+  text-align: right;
+  margin: 2px;
+  padding: 2px;
+}
+
+input {
+  padding: 2px;
+  margin: 2px;
 }
 
 .top_right {
