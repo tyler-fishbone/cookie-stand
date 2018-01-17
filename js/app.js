@@ -3,7 +3,7 @@
 // global variables here
 // instantial array of strings, 6am -> 8pm
 var hoursOfOperation = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm'];
-var salesTable = document.getElementById('locations');
+var locationTable = document.getElementById('locations');
 var newLocationForm = document.getElementById('new-location-form');
 
 var arrayOfLocations = [];
@@ -50,7 +50,7 @@ Location.prototype.render = function () {
   tdEl.textContent = totalCookiesSold;
   trEl.appendChild(tdEl);
   //append everything into table row
-  salesTable.appendChild(trEl);
+  locationTable.appendChild(trEl);
 };
 
 
@@ -70,7 +70,7 @@ function makeHeaderRow (headerArray) {
   thEl.textContent = 'Daily Location Total';
   trEl.appendChild(thEl);
   //append everything into table row
-  salesTable.appendChild(trEl);
+  locationTable.appendChild(trEl);
 }
 
 
@@ -90,19 +90,33 @@ function makeFooterRow (footerArray) {
   tdEl.textContent = '';
   trEl.appendChild(tdEl);
   //append everything into table row
-  salesTable.appendChild(trEl);
+  locationTable.appendChild(trEl);
 }
 
 // function that loops through location objects, renders them to table
+// this function will create headers and footer row as well
 function renderAllLocations() {
+  makeHeaderRow(hoursOfOperation);
   for(var i in arrayOfLocations){
     arrayOfLocations[i].render();
   }
+  makeFooterRow(arrayOfHourlyTotals);
 }
 
 // function which adds location from form to table
 function addNewLocation(event) {
-  event;
+  event.preventDefault();
+  console.log(event.target.locationName.value);
+  var newName = event.target.locationName.value;
+  // var newMinCust_Hour
+  // var newMaxCust_Hour
+  // var newAvgCookies_Customer
+
+  new Location(newName);
+
+  locationTable.innerHTML = '';
+
+  renderAllLocations();
 }
 
 
@@ -116,7 +130,4 @@ new Location('Alki', 2, 16, 4.6);
 // event listener for form submittal
 newLocationForm.addEventListener('submit', addNewLocation);
 
-//make table
-makeHeaderRow(hoursOfOperation);
 renderAllLocations();
-makeFooterRow(arrayOfHourlyTotals);
