@@ -36,6 +36,10 @@ table {
   border: 1px solid rgb(255, 255, 255);
 }
 
+label {
+  width: 260px;
+}
+
 main section {
   min-height: 300 px;
 }
@@ -55,6 +59,18 @@ footer li {
   width: 60%;
   left: 20%;
   margin: auto;
+}
+
+.title {
+  float: left;
+  text-align: right;
+  margin: 2px;
+  padding: 2px;
+}
+
+input {
+  padding: 2px;
+  margin: 2px;
 }
 
 .top_right {

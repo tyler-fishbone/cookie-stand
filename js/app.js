@@ -108,11 +108,11 @@ function addNewLocation(event) {
   event.preventDefault();
   console.log(event.target.locationName.value);
   var newName = event.target.locationName.value;
-  // var newMinCust_Hour
-  // var newMaxCust_Hour
-  // var newAvgCookies_Customer
+  var newMinCust_Hour = event.target.minCust_Hour.value;
+  var newMaxCust_Hour = event.target.maxCust_Hour.value;
+  var newAvgCookies_Customer = event.target.avgCookies_Customer.value;
 
-  new Location(newName);
+  new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
 
   locationTable.innerHTML = '';
 

@@ -11,18 +11,28 @@
   <title>Sales Information</title>
 </head>
 
-<body>
+<body class="container_12">
   <h1>Sales Information by Location</h1>
   <table id="locations"></table>
   <br>
   <a class="top_right" id="home_button" href="index.html">Home</a>
   
-  <form id="new-location-form">
+  <form id="new-location-form" class="grid_6">
     <fieldset>
       <legend>Add a New Cookie Stand Location</legend>
       
-      <label for="locationName">Name:</label>
+      <label for="locationName" class="title">Name:</label>
       <input name="locationName" type="text" />
+      
+      <label for="minCust_Hour" class="title">Minimum Customers per Hour:</label>
+      <input name="minCust_Hour" type="text" />
+
+      <label for="maxCust_Hour" class="title">Maximum Customers per Hour:</label>
+      <input name="maxCust_Hour" type="text" />
+      
+      <label for="avgCookies_Customer" class="title">Avg Cookies Purchased per Customer:</label>
+      <input name="avgCookies_Customer" type="text" />
+
       
       <button id="add-cookie-stand">Click to Add!</button>
     </fieldset>
