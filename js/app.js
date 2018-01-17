@@ -53,7 +53,6 @@ Location.prototype.render = function () {
   locationTable.appendChild(trEl);
 };
 
-
 function makeHeaderRow (headerArray) {
   //new row, empty first cell
   var trEl = document.createElement('tr');
@@ -73,8 +72,8 @@ function makeHeaderRow (headerArray) {
   locationTable.appendChild(trEl);
 }
 
-
 function makeFooterRow (footerArray) {
+  var sumTotalOfElements = 0;
   //new row, empty first cell
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
@@ -85,12 +84,14 @@ function makeFooterRow (footerArray) {
     tdEl = document.createElement('td');
     tdEl.textContent = footerArray[i];
     trEl.appendChild(tdEl);
+    sumTotalOfElements += footerArray[i];
   }
-  tdEl = document.createElement('th');
-  tdEl.textContent = '';
+  tdEl = document.createElement('td');
+  tdEl.textContent = sumTotalOfElements;
   trEl.appendChild(tdEl);
   //append everything into table row
   locationTable.appendChild(trEl);
+  //make last value the sum total of the elements in the array
 }
 
 // function that loops through location objects, renders them to table
@@ -115,10 +116,9 @@ function addNewLocation(event) {
   new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
 
   locationTable.innerHTML = '';
-
+  arrayOfHourlyTotals = [];
   renderAllLocations();
 }
-
 
 //construct objects
 new Location('1st and Pike', 23, 65, 6.3);
