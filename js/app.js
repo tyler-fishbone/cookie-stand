@@ -3,12 +3,13 @@
 // global variables here
 // instantial array of strings, 6am -> 8pm
 var hoursOfOperation = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm'];
-// var arrayOfLocations = [];
 var salesTable = document.getElementById('locations');
+var newLocationForm = document.getElementById('new-location-form');
+
 var arrayOfLocations = [];
 var arrayOfHourlyTotals = [];
 
-function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
+function Location(name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
   this.name = name;
   this.minCust_Hour = minCust_Hour;
   this.maxCust_Hour = maxCust_Hour;
@@ -42,7 +43,7 @@ Location.prototype.render = function () {
     } else {
       arrayOfHourlyTotals[i] += parseInt(cookiesSoldInHour);
     }
-    console.log(arrayOfHourlyTotals);
+    // console.log(arrayOfHourlyTotals);
   }
   //finish tr with total cookies sold
   tdEl = document.createElement('td');
@@ -80,7 +81,7 @@ function makeFooterRow (footerArray) {
   tdEl.textContent = 'Totals';
   trEl.appendChild(tdEl);
   // loop through hours of operation
-  for(var i = 0; i < arrayOfTotals.length; i++){
+  for(var i = 0; i < arrayOfHourlyTotals.length; i++){
     tdEl = document.createElement('td');
     tdEl.textContent = footerArray[i];
     trEl.appendChild(tdEl);
@@ -92,18 +93,30 @@ function makeFooterRow (footerArray) {
   salesTable.appendChild(trEl);
 }
 
+// function that loops through location objects, renders them to table
+function renderAllLocations() {
+  for(var i in arrayOfLocations){
+    arrayOfLocations[i].render();
+  }
+}
+
+// function which adds location from form to table
+function addNewLocation(event) {
+  event;
+}
+
+
 //construct objects
-var firstAndPike = new Location('1st and Pike', 23, 65, 6.3);
-var seaTacAirport = new Location('Seatac Airport', 3, 24, 1.2);
-var seattleCenter = new Location('Seattle Center', 11, 38, 3.7);
-var capitolHill = new Location('Capitol Hill', 20, 38, 2.3);
-var alki = new Location('Alki', 2, 16, 4.6);
+new Location('1st and Pike', 23, 65, 6.3);
+new Location('Seatac Airport', 3, 24, 1.2);
+new Location('Seattle Center', 11, 38, 3.7);
+new Location('Capitol Hill', 20, 38, 2.3);
+new Location('Alki', 2, 16, 4.6);
+
+// event listener for form submittal
+newLocationForm.addEventListener('submit', addNewLocation);
 
 //make table
 makeHeaderRow(hoursOfOperation);
-firstAndPike.render();
-seaTacAirport.render();
-seattleCenter.render();
-capitolHill.render();
-alki.render();
-makeFooterRow(arrayOfTotals);
+renderAllLocations();
+makeFooterRow(arrayOfHourlyTotals);
