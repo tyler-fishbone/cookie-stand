@@ -5,7 +5,8 @@
 var hoursOfOperation = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm'];
 // var arrayOfLocations = [];
 var salesTable = document.getElementById('locations');
-var arrayOfTotals = [];
+var arrayOfLocations = [];
+var arrayOfHourlyTotals = [];
 
 function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
   this.name = name;
@@ -17,7 +18,7 @@ function Location (name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
     // console.log(ranNumCust);
     return ranNumCust;
   };
-  // arrayOfLocations.push(this);
+  arrayOfLocations.push(this);
 }
 
 //render method for Location
@@ -36,12 +37,12 @@ Location.prototype.render = function () {
     trEl.appendChild(tdEl);
     totalCookiesSold += cookiesSoldInHour;
     //increment array of totals index by cookiesSoldInHour
-    if (arrayOfTotals.length !== hoursOfOperation.length ) {
-      arrayOfTotals[i] = parseInt(cookiesSoldInHour);
+    if (arrayOfHourlyTotals.length !== hoursOfOperation.length ) {
+      arrayOfHourlyTotals[i] = parseInt(cookiesSoldInHour);
     } else {
-      arrayOfTotals[i] += parseInt(cookiesSoldInHour);
+      arrayOfHourlyTotals[i] += parseInt(cookiesSoldInHour);
     }
-    console.log(arrayOfTotals);
+    console.log(arrayOfHourlyTotals);
   }
   //finish tr with total cookies sold
   tdEl = document.createElement('td');
