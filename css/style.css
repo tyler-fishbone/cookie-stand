@@ -2,25 +2,70 @@
 
 
 body {
-  background-color:  #36342C;;
-  color: rgb(255, 255, 255);
+  /* background-color:  #36342C;; */
+  background-image: url('https://images.unsplash.com/photo-1431936424001-447bddcccff1?auto=format&fit=crop&w=1267&q=80');
+}
+
+.sales {
+  background-color: rgb(37, 22, 5);
+}
+
+nav {
+  background-color: rgb(39, 39, 39);
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  text-align: right;
+}
+
+nav a {
+  display: block;
+  padding: 8px;
+  color: rgb(109, 109, 109)
 }
 
 header {
   color: #36342C;
-  border: 1px solid rgb(255, 255, 255);
   padding-bottom: 120px;
+  height: 100px;
 }
 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Istok Web', sans-serif;
+  
+}
+
+p, li {
+  font-family: 'Lora', serif;
+  color: rgb(255, 255, 255);
+  padding-left: 10px;
+}
+
+table, form {
+  color: white;
+}
 
 h1 {
-  font-family: 'Indie Flower', cursive;
-  color: #BC543B;
-  max-width: 50%;
+  color: rgb(255, 255, 255);
+  font-size: 320%;
 }
 
-section{
-  background-color: rgb(70, 44, 30);
+#cookies_header {
+  font-size: 532%;
+}
+
+h3 {
+  font-size: 20px;
+  color: #BC543B;
+}
+
+#salmon_logo {
+  width: 100%;
+}
+
+section {
+  background-color: rgba(20, 20, 20, 0.801);
 }
 
 main {
@@ -39,20 +84,8 @@ main section {
   min-height: 300 px;
 }
 
-ul {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 footer li {
   font-size: 14px;
-}
-
-#salmon_logo {
-  position: absolute;
-  top: 60px;
-  width: 60%;
-  left: 20%;
-  margin: auto;
 }
 
 .title {
@@ -68,9 +101,7 @@ input {
 }
 
 .top_right {
-  font-family: 'Indie Flower', cursive;
   font-size: 19px;
-  position: absolute;
   right: 20px;
   top: 0px;
   width: 300px;
@@ -81,10 +112,4 @@ input {
 #home_button {
   top: 30px;
   width: 100px;
-}
-
-#sales_link {
-  bottom: 10px;
-  right: 10px;
-  color: rgb(109, 109, 109)
 }
