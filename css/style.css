@@ -21,13 +21,15 @@ nav {
 nav a {
   display: block;
   padding: 8px;
-  color: rgb(109, 109, 109)
+  color: rgb(109, 109, 109);
+  text-decoration: none;
 }
 
 header {
   color: #36342C;
+  padding-top: 10px;
   padding-bottom: 120px;
-  height: 100px;
+  height: 170px;
 }
 
 
@@ -39,20 +41,23 @@ h1, h2, h3, h4, h5, h6 {
 p, li {
   font-family: 'Lora', serif;
   color: rgb(255, 255, 255);
-  padding-left: 10px;
+  padding: 2px;
 }
 
 table, form {
   color: white;
 }
 
-h1 {
+#pats-salmon{
   color: rgb(255, 255, 255);
   font-size: 320%;
+  padding-top: 10px;
 }
 
 #cookies_header {
   font-size: 532%;
+  color: rgb(255, 255, 255);
+
 }
 
 h3 {
@@ -65,7 +70,13 @@ h3 {
 }
 
 section {
-  background-color: rgba(20, 20, 20, 0.801);
+  /* background-color: rgba(20, 20, 20, 0.801); */
+}
+
+section h3 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 200 px;
 }
 
 main {
@@ -84,8 +95,18 @@ main section {
   min-height: 300 px;
 }
 
+footer {
+  background-color: rgba(255, 255, 255, 0.801);
+  height: 200 px;
+}
+
 footer li {
   font-size: 14px;
+  color: #BC543B;
+}
+
+ul {
+  padding-bottom: 20px;
 }
 
 .title {

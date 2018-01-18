@@ -72,27 +72,46 @@ function makeHeaderRow (headerArray) {
   locationTable.appendChild(trEl);
 }
 
-function makeFooterRow (footerArray) {
-  var sumTotalOfElements = 0;
-  //new row, empty first cell
+// function makeFooterRow (footerArray) {
+//   var sumTotalOfElements = 0;
+//   //new row, empty first cell
+//   var trEl = document.createElement('tr');
+//   var tdEl = document.createElement('td');
+//   tdEl.textContent = 'Totals';
+//   trEl.appendChild(tdEl);
+//   // loop through hours of operation
+//   for(var i = 0; i < arrayOfHourlyTotals.length; i++){
+//     tdEl = document.createElement('td');
+//     tdEl.textContent = footerArray[i];
+//     trEl.appendChild(tdEl);
+//     sumTotalOfElements += footerArray[i];
+//   }
+//   tdEl = document.createElement('td');
+//   tdEl.textContent = sumTotalOfElements;
+//   trEl.appendChild(tdEl);
+//   //append everything into table row
+//   locationTable.appendChild(trEl);
+//   //make last value the sum total of the elements in the array
+// }
+
+//alternate way of making footer row using nested for loop
+function makeFooterRow_2() {
   var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  tdEl.textContent = 'Totals';
-  trEl.appendChild(tdEl);
-  // loop through hours of operation
-  for(var i = 0; i < arrayOfHourlyTotals.length; i++){
-    tdEl = document.createElement('td');
-    tdEl.textContent = footerArray[i];
-    trEl.appendChild(tdEl);
-    sumTotalOfElements += footerArray[i];
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Hourly Total for All Stores';
+  trEl.appendChild(thEl);
+  for(var i in hoursOfOperation) {
+    var hourlyTotal = 0;
+    for(var j in arrayOfLocations) {
+      hourlyTotal += arrayOfLocations[j].arrayOfHourlyTotals[i];
+    }
+    thEl = document.createElement('th');
+    thEl.textContent = hourlyTotal;
+    trEl.appendChild('thEl');
   }
-  tdEl = document.createElement('td');
-  tdEl.textContent = sumTotalOfElements;
-  trEl.appendChild(tdEl);
-  //append everything into table row
   locationTable.appendChild(trEl);
-  //make last value the sum total of the elements in the array
 }
+
 
 // function that loops through location objects, renders them to table
 // this function will create headers and footer row as well
@@ -131,3 +150,4 @@ new Location('Alki', 2, 16, 4.6);
 newLocationForm.addEventListener('submit', addNewLocation);
 
 renderAllLocations();
+
