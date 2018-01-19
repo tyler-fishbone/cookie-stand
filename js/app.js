@@ -16,7 +16,7 @@ function Location(name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
   this.avgCookies_Customer = avgCookies_Customer;
   this.randomNumCustomers_Hour = function () {
     var ranNumCust = Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
-    // console.log(ranNumCust);
+    console.log(ranNumCust);
     return ranNumCust;
   };
   arrayOfLocations.push(this);
