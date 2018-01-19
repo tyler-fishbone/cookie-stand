@@ -114,54 +114,24 @@ function addNewLocation(event) {
   var newMaxCust_Hour = parseInt(event.target.maxCust_Hour.value);
   var newAvgCookies_Customer = parseInt(event.target.avgCookies_Customer.value);
   
-  //  --------- place holder for checking functions
-
+  // next step is to pull this function out of parent
   for(var i = 0; i < arrayOfLocations.length; i++) {
     if(arrayOfLocations[i].name === newName){
       console.log('arrayOfLocations already includes: ' + newName);
       break;
     } else if (i === (arrayOfLocations.length - 1)) {
       new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
-      console.log('just added: newName');
+      console.log('just added: ' + newName);
     } else {
       console.log('loop num: ' + i);
       continue;
     }
   }
   
-
-
-  //if there is no repeats of the name
-  // new location
-  // else
-  // break out and don't make a new location
-  
-  // new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
-  
   locationTable.innerHTML = '';
   arrayOfHourlyTotals = [];
   renderAllLocations();
 }
-
-// // Location.prototype.checkIfLocationExists = function () {
-//   for(var i in arrayOfLocations) {
-//     if(arrayOfLocations.name === newName){
-//       console.log('arrayOfLocations already includes: ' + this.locationName);
-//     }
-//   }
-
-
-    
-
-// // check if name is already entered into the array
-// function checkIfLocationExists () {
-//   if (arrayOfLocations.includes(this.locationName)){
-//     console.log('arrayOfLocations already includes: ' + this.locationName);
-//   }
-// }
-// // if so, overwrite that instance of the object
-// // else continue
-
 
 //construct objects
 new Location('1st and Pike', 23, 65, 6.3);
