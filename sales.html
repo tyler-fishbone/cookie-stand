@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" type="text/css"
   href="css/960_12_col.css" />
   <link rel="stylesheet" href="css/style.css">
@@ -11,33 +12,42 @@
   <title>Sales Information</title>
 </head>
 
-<body class="container_12" >
-  <div class="sales grid_12">
-    <h1>Sales Information by Location</h1>
-    <table id="locations"></table>
-    <br>
-    <a class="top_right" id="home_button" href="index.html">Home</a>
-    
-    <form id="new-location-form" class="grid_6">
-      <fieldset>
-        <legend>Add a New Cookie Stand Location</legend>
-        
-        <label for="locationName" class="title">Name:</label>
-        <input name="locationName" type="text" />
-        
-        <label for="minCust_Hour" class="title">Minimum Customers per Hour:</label>
-        <input name="minCust_Hour" type="number" />
+<body>
+  <nav>
+    <a id="index_link" href="index.html">Home</a>
+  </nav>
+  <div>
+      <header class="container_12">
+          <div class="grid_4 prefix_4 suffix_4">
+            <img src="images/salmon.png" id="salmon_logo">
+            <h1 id="pats-sales">Pat's Sales</h1>
+            <h1 id="information-header">Information</h1>
+          </div>
+      </header>
+    <article class="container_12">
+      <table id="locations" class="grid_12"></table>
+      <br>
+      <form id="new-location-form" class="grid_6">
+        <fieldset>
+          <legend><h3>Add a New Cookie Stand Location</h3></legend>
+          
+          <label for="locationName" class="title">Name:</label>
+          <input name="locationName" type="text" />
+          
+          <label for="minCust_Hour" class="title">Minimum Customers per Hour:</label>
+          <input name="minCust_Hour" type="number" />
 
-        <label for="maxCust_Hour" class="title">Maximum Customers per Hour:</label>
-        <input name="maxCust_Hour" type="number" />
-        
-        <label for="avgCookies_Customer" class="title">Avg Cookies Purchased per Customer:</label>
-        <input name="avgCookies_Customer" type="number" min="0" step=".1" />
+          <label for="maxCust_Hour" class="title">Maximum Customers per Hour:</label>
+          <input name="maxCust_Hour" type="number" />
+          
+          <label for="avgCookies_Customer" class="title">Avg Cookies Purchased per Customer:</label>
+          <input name="avgCookies_Customer" type="number" min="0" step=".1" />
 
-        
-        <button id="add-cookie-stand">Click to Add!</button>
-      </fieldset>
-    </form>
+          
+          <button id="add-cookie-stand">Click to Add!</button>
+        </fieldset>
+      </form>
+    </article>
     
   </div>
   <script type="text/javascript" src="js/app.js"></script>
