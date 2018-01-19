@@ -2,7 +2,7 @@
 
 // global variables here
 // instantial array of strings, 6am -> 8pm
-var hoursOfOperation = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm'];
+var hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var locationTable = document.getElementById('locations');
 var newLocationForm = document.getElementById('new-location-form');
 
@@ -72,45 +72,45 @@ function makeHeaderRow (headerArray) {
   locationTable.appendChild(trEl);
 }
 
-// function makeFooterRow (footerArray) {
-//   var sumTotalOfElements = 0;
-//   //new row, empty first cell
-//   var trEl = document.createElement('tr');
-//   var tdEl = document.createElement('td');
-//   tdEl.textContent = 'Totals';
-//   trEl.appendChild(tdEl);
-//   // loop through hours of operation
-//   for(var i = 0; i < arrayOfHourlyTotals.length; i++){
-//     tdEl = document.createElement('td');
-//     tdEl.textContent = footerArray[i];
-//     trEl.appendChild(tdEl);
-//     sumTotalOfElements += footerArray[i];
-//   }
-//   tdEl = document.createElement('td');
-//   tdEl.textContent = sumTotalOfElements;
-//   trEl.appendChild(tdEl);
-//   //append everything into table row
-//   locationTable.appendChild(trEl);
-//   //make last value the sum total of the elements in the array
-// }
-
-//alternate way of making footer row using nested for loop
-function makeFooterRow_2() {
+function makeFooterRow (footerArray) {
+  var sumTotalOfElements = 0;
+  //new row, empty first cell
   var trEl = document.createElement('tr');
-  var thEl = document.createElement('th');
-  thEl.textContent = 'Hourly Total for All Stores';
-  trEl.appendChild(thEl);
-  for(var i in hoursOfOperation) {
-    var hourlyTotal = 0;
-    for(var j in arrayOfLocations) {
-      hourlyTotal += arrayOfLocations[j].arrayOfHourlyTotals[i];
-    }
-    thEl = document.createElement('th');
-    thEl.textContent = hourlyTotal;
-    trEl.appendChild('thEl');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = 'Totals';
+  trEl.appendChild(tdEl);
+  // loop through hours of operation
+  for(var i = 0; i < arrayOfHourlyTotals.length; i++){
+    tdEl = document.createElement('td');
+    tdEl.textContent = footerArray[i];
+    trEl.appendChild(tdEl);
+    sumTotalOfElements += footerArray[i];
   }
+  tdEl = document.createElement('td');
+  tdEl.textContent = sumTotalOfElements;
+  trEl.appendChild(tdEl);
+  //append everything into table row
   locationTable.appendChild(trEl);
+  //make last value the sum total of the elements in the array
 }
+
+// //alternate way of making footer row using nested for loop
+// function makeFooterRow_2() {
+//   var trEl = document.createElement('tr');
+//   var thEl = document.createElement('th');
+//   thEl.textContent = 'Hourly Total for All Stores';
+//   trEl.appendChild(thEl);
+//   for(var i in hoursOfOperation) {
+//     var hourlyTotal = 0;
+//     for(var j in arrayOfLocations) {
+//       hourlyTotal += arrayOfLocations[j].arrayOfHourlyTotals[i];
+//     }
+//     thEl = document.createElement('th');
+//     thEl.textContent = hourlyTotal;
+//     trEl.appendChild('thEl');
+//   }
+//   locationTable.appendChild(trEl);
+// }
 
 
 // function that loops through location objects, renders them to table
