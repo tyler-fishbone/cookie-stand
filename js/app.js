@@ -16,7 +16,7 @@ function Location(name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
   this.avgCookies_Customer = avgCookies_Customer;
   this.randomNumCustomers_Hour = function () {
     var ranNumCust = Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
-    console.log(ranNumCust);
+    // console.log(ranNumCust);
     return ranNumCust;
   };
   arrayOfLocations.push(this);
@@ -94,6 +94,91 @@ function makeFooterRow (footerArray) {
   //make last value the sum total of the elements in the array
 }
 
+// function that loops through location objects, renders them to table
+// this function will create headers and footer row as well
+function renderAllLocations() {
+  makeHeaderRow(hoursOfOperation);
+  for(var i in arrayOfLocations){
+    arrayOfLocations[i].render();
+  }
+  makeFooterRow(arrayOfHourlyTotals);
+}
+
+// function which adds location from form to table
+function addNewLocation(event) {
+  event.preventDefault();
+  console.log(event.target.locationName.value);
+  
+  var newName = event.target.locationName.value;
+  var newMinCust_Hour = parseInt(event.target.minCust_Hour.value);
+  var newMaxCust_Hour = parseInt(event.target.maxCust_Hour.value);
+  var newAvgCookies_Customer = parseInt(event.target.avgCookies_Customer.value);
+  
+  //  --------- place holder for checking functions
+
+  for(var i = 0; i < arrayOfLocations.length; i++) {
+    if(arrayOfLocations[i].name === newName){
+      console.log('arrayOfLocations already includes: ' + newName);
+      break;
+    } else if (i === (arrayOfLocations.length - 1)) {
+      new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
+      console.log('just added: newName');
+    } else {
+      console.log('loop num: ' + i);
+      continue;
+    }
+  }
+  
+
+
+  //if there is no repeats of the name
+  // new location
+  // else
+  // break out and don't make a new location
+  
+  // new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
+  
+  locationTable.innerHTML = '';
+  arrayOfHourlyTotals = [];
+  renderAllLocations();
+}
+
+// // Location.prototype.checkIfLocationExists = function () {
+//   for(var i in arrayOfLocations) {
+//     if(arrayOfLocations.name === newName){
+//       console.log('arrayOfLocations already includes: ' + this.locationName);
+//     }
+//   }
+
+
+    
+
+// // check if name is already entered into the array
+// function checkIfLocationExists () {
+//   if (arrayOfLocations.includes(this.locationName)){
+//     console.log('arrayOfLocations already includes: ' + this.locationName);
+//   }
+// }
+// // if so, overwrite that instance of the object
+// // else continue
+
+
+//construct objects
+new Location('1st and Pike', 23, 65, 6.3);
+new Location('Seatac Airport', 3, 24, 1.2);
+new Location('Seattle Center', 11, 38, 3.7);
+new Location('Capitol Hill', 20, 38, 2.3);
+new Location('Alki', 2, 16, 4.6);
+
+// event listener for form submittal
+newLocationForm.addEventListener('submit', addNewLocation);
+
+renderAllLocations();
+
+
+
+
+//left over code
 // //alternate way of making footer row using nested for loop
 // function makeFooterRow_2() {
 //   var trEl = document.createElement('tr');
@@ -111,43 +196,3 @@ function makeFooterRow (footerArray) {
 //   }
 //   locationTable.appendChild(trEl);
 // }
-
-
-// function that loops through location objects, renders them to table
-// this function will create headers and footer row as well
-function renderAllLocations() {
-  makeHeaderRow(hoursOfOperation);
-  for(var i in arrayOfLocations){
-    arrayOfLocations[i].render();
-  }
-  makeFooterRow(arrayOfHourlyTotals);
-}
-
-// function which adds location from form to table
-function addNewLocation(event) {
-  event.preventDefault();
-  console.log(event.target.locationName.value);
-  var newName = event.target.locationName.value;
-  var newMinCust_Hour = event.target.minCust_Hour.value;
-  var newMaxCust_Hour = event.target.maxCust_Hour.value;
-  var newAvgCookies_Customer = event.target.avgCookies_Customer.value;
-
-  new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
-
-  locationTable.innerHTML = '';
-  arrayOfHourlyTotals = [];
-  renderAllLocations();
-}
-
-//construct objects
-new Location('1st and Pike', 23, 65, 6.3);
-new Location('Seatac Airport', 3, 24, 1.2);
-new Location('Seattle Center', 11, 38, 3.7);
-new Location('Capitol Hill', 20, 38, 2.3);
-new Location('Alki', 2, 16, 4.6);
-
-// event listener for form submittal
-newLocationForm.addEventListener('submit', addNewLocation);
-
-renderAllLocations();
-
