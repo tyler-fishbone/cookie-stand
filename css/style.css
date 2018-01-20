@@ -32,6 +32,10 @@ header {
   height: 200px;
 }
 
+.sales_header {
+  padding-bottom: 50px;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Istok Web', sans-serif;
@@ -54,10 +58,6 @@ main {
   height: 200 px;
   color: #bc543b;
   padding-top: 20px;
-}
-
-section {
-
 }
 
 section h3 {
@@ -216,13 +216,23 @@ label {
 }
 
 article fieldset {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
-form fieldset h3 {
+form legend {
   margin-left: 95px;
 }
 
+article form ul {
+  display: inline-block;
+}
+
+article form ul li {
+  color: #BC543B;
+}
+
 form fieldset button {
-  margin-left: 320px;
+  position: absolute;
+  right: 260px;
+  bottom: 328px;
 }
