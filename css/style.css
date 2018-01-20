@@ -214,3 +214,15 @@ table {
 label {
   width: 260px;
 }
+
+article fieldset {
+  margin-bottom: 30px;
+}
+
+form fieldset h3 {
+  margin-left: 95px;
+}
+
+form fieldset button {
+  margin-left: 320px;
+}
