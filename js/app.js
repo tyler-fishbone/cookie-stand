@@ -5,25 +5,23 @@
 var hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var locationTable = document.getElementById('locations');
 var newLocationForm = document.getElementById('new-location-form');
-
 var arrayOfLocations = [];
 var arrayOfHourlyTotals = [];
 
-function Location(name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
+function PatsLocation(name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
   this.name = name;
   this.minCust_Hour = minCust_Hour;
   this.maxCust_Hour = maxCust_Hour;
   this.avgCookies_Customer = avgCookies_Customer;
   this.randomNumCustomers_Hour = function () {
     var ranNumCust = Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
-    // console.log(ranNumCust);
     return ranNumCust;
   };
   arrayOfLocations.push(this);
 }
 
 //render method for Location
-Location.prototype.render = function () {
+PatsLocation.prototype.render = function () {
   var totalCookiesSold = 0;
   // start tr with name of location
   var trEl = document.createElement('tr');
@@ -43,7 +41,6 @@ Location.prototype.render = function () {
     } else {
       arrayOfHourlyTotals[i] += parseInt(cookiesSoldInHour);
     }
-    // console.log(arrayOfHourlyTotals);
   }
   //finish tr with total cookies sold
   tdEl = document.createElement('td');
@@ -106,40 +103,32 @@ function renderAllLocations() {
 
 // function which adds location from form to table
 function addNewLocation(event) {
-  event.preventDefault();
-  console.log(event.target.locationName.value);
-  
+  event.preventDefault();  
   var newName = event.target.locationName.value;
-  var newMinCust_Hour = parseInt(event.target.minCust_Hour.value);
-  var newMaxCust_Hour = parseInt(event.target.maxCust_Hour.value);
-  var newAvgCookies_Customer = parseInt(event.target.avgCookies_Customer.value);
-  
+  var newMinCust_Hour = event.target.minCust_Hour.value;
+  var newMaxCust_Hour = event.target.maxCust_Hour.value;
+  var newAvgCookies_Customer = event.target.avgCookies_Customer.value;
   // next step is to pull this function out of parent
   for(var i = 0; i < arrayOfLocations.length; i++) {
     if(arrayOfLocations[i].name === newName){
-      // console.log('arrayOfLocations already includes: ' + newName);
-      // alert(newName + ' already exists as a store location');
       break;
     } else if (i === (arrayOfLocations.length - 1)) {
-      new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
-      // console.log('just added: ' + newName);
+      new PatsLocation(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
     } else {
-      // console.log('loop num: ' + i);
       continue;
     }
   }
-  
   locationTable.innerHTML = '';
   arrayOfHourlyTotals = [];
   renderAllLocations();
 }
 
 //construct objects
-new Location('1st and Pike', 23, 65, 6.3);
-new Location('Seatac Airport', 3, 24, 1.2);
-new Location('Seattle Center', 11, 38, 3.7);
-new Location('Capitol Hill', 20, 38, 2.3);
-new Location('Alki', 2, 16, 4.6);
+new PatsLocation('1st and Pike', 23, 65, 6.3);
+new PatsLocation('Seatac Airport', 3, 24, 1.2);
+new PatsLocation('Seattle Center', 11, 38, 3.7);
+new PatsLocation('Capitol Hill', 20, 38, 2.3);
+new PatsLocation('Alki', 2, 16, 4.6);
 
 // event listener for form submittal
 newLocationForm.addEventListener('submit', addNewLocation);

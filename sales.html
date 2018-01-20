@@ -17,7 +17,7 @@
     <a id="index_link" href="index.html">Home</a>
   </nav>
   <div>
-      <header class="container_12">
+      <header class="container_12 sales_header">
           <div class="grid_4 prefix_4 suffix_4">
             <img src="images/salmon.png" id="salmon_logo">
             <h1 id="pats-sales">Pat's Sales</h1>
@@ -25,28 +25,36 @@
           </div>
       </header>
     <article class="container_12">
-      <table id="locations" class="grid_12"></table>
-      <br>
-      <form id="new-location-form" class="grid_6">
+      <form id="new-location-form" class="grid_12">
         <fieldset>
-          <legend><h3>Add a New Cookie Stand Location</h3></legend>
-          
-          <label for="locationName" class="title">Name:</label>
-          <input name="locationName" type="text" />
-          
-          <label for="minCust_Hour" class="title">Minimum Customers per Hour:</label>
-          <input name="minCust_Hour" type="number" />
-
-          <label for="maxCust_Hour" class="title">Maximum Customers per Hour:</label>
-          <input name="maxCust_Hour" type="number" />
-          
-          <label for="avgCookies_Customer" class="title">Avg Cookies Purchased per Customer:</label>
-          <input name="avgCookies_Customer" type="number" min="0" step=".1" />
-
-          
+          <legend>
+            <h3>Add a New Cookie Stand Location</h3>
+          </legend>
           <button id="add-cookie-stand">Click to Add!</button>
+          <ul>
+            <li>
+              <label for="locationName" class="title">Store Name:</label>
+              <input name="locationName" type="text">
+            </li>
+            <li>
+              <label for="minCust_Hour" class="title">Minimum Customers per Hour:</label>
+              <input name="minCust_Hour" type="number">
+            </li>
+          </ul>
+          <ul>
+              <li>
+                <label for="maxCust_Hour" class="title">Maximum Customers per Hour:</label>
+                <input name="maxCust_Hour" type="number">
+              </li>
+              <li>
+                <label for="avgCookies_Customer" class="title">Avg Cookies per Sale:</label>
+                <input name="avgCookies_Customer" type="number" min="0" step=".1">
+              </li>
+            </ul>
         </fieldset>
       </form>
+      <br>
+      <table id="locations" class="grid_12"></table>
     </article>
     
   </div>
