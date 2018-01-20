@@ -117,13 +117,14 @@ function addNewLocation(event) {
   // next step is to pull this function out of parent
   for(var i = 0; i < arrayOfLocations.length; i++) {
     if(arrayOfLocations[i].name === newName){
-      console.log('arrayOfLocations already includes: ' + newName);
+      // console.log('arrayOfLocations already includes: ' + newName);
+      // alert(newName + ' already exists as a store location');
       break;
     } else if (i === (arrayOfLocations.length - 1)) {
       new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
-      console.log('just added: ' + newName);
+      // console.log('just added: ' + newName);
     } else {
-      console.log('loop num: ' + i);
+      // console.log('loop num: ' + i);
       continue;
     }
   }
