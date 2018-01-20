@@ -16,7 +16,7 @@ function Location(name, minCust_Hour, maxCust_Hour, avgCookies_Customer) {
   this.avgCookies_Customer = avgCookies_Customer;
   this.randomNumCustomers_Hour = function () {
     var ranNumCust = Math.random() * (this.maxCust_Hour - this.minCust_Hour + 1) + this.minCust_Hour;
-    console.log(ranNumCust);
+    // console.log(ranNumCust);
     return ranNumCust;
   };
   arrayOfLocations.push(this);
@@ -94,25 +94,6 @@ function makeFooterRow (footerArray) {
   //make last value the sum total of the elements in the array
 }
 
-// //alternate way of making footer row using nested for loop
-// function makeFooterRow_2() {
-//   var trEl = document.createElement('tr');
-//   var thEl = document.createElement('th');
-//   thEl.textContent = 'Hourly Total for All Stores';
-//   trEl.appendChild(thEl);
-//   for(var i in hoursOfOperation) {
-//     var hourlyTotal = 0;
-//     for(var j in arrayOfLocations) {
-//       hourlyTotal += arrayOfLocations[j].arrayOfHourlyTotals[i];
-//     }
-//     thEl = document.createElement('th');
-//     thEl.textContent = hourlyTotal;
-//     trEl.appendChild('thEl');
-//   }
-//   locationTable.appendChild(trEl);
-// }
-
-
 // function that loops through location objects, renders them to table
 // this function will create headers and footer row as well
 function renderAllLocations() {
@@ -127,13 +108,27 @@ function renderAllLocations() {
 function addNewLocation(event) {
   event.preventDefault();
   console.log(event.target.locationName.value);
+  
   var newName = event.target.locationName.value;
-  var newMinCust_Hour = event.target.minCust_Hour.value;
-  var newMaxCust_Hour = event.target.maxCust_Hour.value;
-  var newAvgCookies_Customer = event.target.avgCookies_Customer.value;
-
-  new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
-
+  var newMinCust_Hour = parseInt(event.target.minCust_Hour.value);
+  var newMaxCust_Hour = parseInt(event.target.maxCust_Hour.value);
+  var newAvgCookies_Customer = parseInt(event.target.avgCookies_Customer.value);
+  
+  // next step is to pull this function out of parent
+  for(var i = 0; i < arrayOfLocations.length; i++) {
+    if(arrayOfLocations[i].name === newName){
+      // console.log('arrayOfLocations already includes: ' + newName);
+      // alert(newName + ' already exists as a store location');
+      break;
+    } else if (i === (arrayOfLocations.length - 1)) {
+      new Location(newName, newMinCust_Hour, newMaxCust_Hour, newAvgCookies_Customer);
+      // console.log('just added: ' + newName);
+    } else {
+      // console.log('loop num: ' + i);
+      continue;
+    }
+  }
+  
   locationTable.innerHTML = '';
   arrayOfHourlyTotals = [];
   renderAllLocations();
@@ -151,3 +146,24 @@ newLocationForm.addEventListener('submit', addNewLocation);
 
 renderAllLocations();
 
+
+
+
+//left over code
+// //alternate way of making footer row using nested for loop
+// function makeFooterRow_2() {
+//   var trEl = document.createElement('tr');
+//   var thEl = document.createElement('th');
+//   thEl.textContent = 'Hourly Total for All Stores';
+//   trEl.appendChild(thEl);
+//   for(var i in hoursOfOperation) {
+//     var hourlyTotal = 0;
+//     for(var j in arrayOfLocations) {
+//       hourlyTotal += arrayOfLocations[j].arrayOfHourlyTotals[i];
+//     }
+//     thEl = document.createElement('th');
+//     thEl.textContent = hourlyTotal;
+//     trEl.appendChild('thEl');
+//   }
+//   locationTable.appendChild(trEl);
+// }
