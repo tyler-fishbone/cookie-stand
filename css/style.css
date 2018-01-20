@@ -230,9 +230,3 @@ article form ul {
 article form ul li {
   color: #BC543B;
 }
-
-form fieldset button {
-  position: absolute;
-  right: 260px;
-  bottom: 328px;
-}
